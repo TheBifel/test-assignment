@@ -1,5 +1,7 @@
 package dev.bifel.testtask.model.entity
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 
@@ -24,4 +26,32 @@ data class Login(
     val sha1: String? = null,
     @SerializedName("sha256")
     val sha256: String? = null,
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(uuid)
+        parcel.writeString(username)
+        parcel.writeString(password)
+        parcel.writeString(salt)
+        parcel.writeString(md5)
+        parcel.writeString(sha1)
+        parcel.writeString(sha256)
+    }
+
+    override fun describeContents(): Int = 0
+
+    companion object CREATOR : Parcelable.Creator<Login> {
+        override fun createFromParcel(parcel: Parcel): Login = Login(parcel)
+
+        override fun newArray(size: Int): Array<Login?> = arrayOfNulls(size)
+    }
+}
