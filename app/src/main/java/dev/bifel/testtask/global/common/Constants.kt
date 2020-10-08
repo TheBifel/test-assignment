@@ -1,4 +1,4 @@
-package dev.bifel.testtask.common
+package dev.bifel.testtask.global.common
 
 /**
  * Date: 08.10.2020

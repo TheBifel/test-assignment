@@ -1,6 +1,8 @@
 package dev.bifel.testtask
 
 import android.app.Application
+import dev.bifel.testtask.di.repositoryModule
+import dev.bifel.testtask.di.retrofitModule
 import org.koin.android.ext.android.startKoin
 import org.koin.standalone.KoinComponent
 
@@ -13,6 +15,6 @@ import org.koin.standalone.KoinComponent
 class App : Application(), KoinComponent {
     override fun onCreate() {
         super.onCreate()
-        startKoin(this, listOf())
+        startKoin(this, listOf(retrofitModule, repositoryModule))
     }
 }
