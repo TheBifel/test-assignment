@@ -21,6 +21,7 @@ abstract class BaseActivity<VIEW : BaseView>() : Activity(), KoinComponent, Base
 
     protected fun bindPresenter(presenter: BasePresenter<VIEW>, view: VIEW) {
         this.presenter = presenter
+        presenter.bindView(view)
     }
 
     override fun onResume() {

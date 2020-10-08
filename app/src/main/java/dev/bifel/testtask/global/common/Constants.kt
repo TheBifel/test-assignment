@@ -7,4 +7,4 @@ package dev.bifel.testtask.global.common
  * @author Bohdan Ishchenko
  */
 
-const val BASE_URL = "https://randomuser.me/api"
+const val BASE_URL = "https://randomuser.me/"

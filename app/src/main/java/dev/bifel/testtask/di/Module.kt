@@ -5,6 +5,7 @@ import dev.bifel.testtask.global.common.BASE_URL
 import dev.bifel.testtask.model.api.UsersApi
 import dev.bifel.testtask.model.repo.Repository
 import dev.bifel.testtask.model.repo.RepositoryImpl
+import dev.bifel.testtask.pages.list.ListPresenter
 import okhttp3.OkHttpClient
 import org.koin.dsl.module.applicationContext
 import retrofit2.Retrofit
@@ -18,6 +19,10 @@ import java.util.concurrent.TimeUnit
  *
  * @author Bohdan Ishchenko
  */
+
+val presenterModule = applicationContext {
+    bean { ListPresenter() }
+}
 
 val repositoryModule = applicationContext {
     bean { RepositoryImpl(get()) as Repository }
