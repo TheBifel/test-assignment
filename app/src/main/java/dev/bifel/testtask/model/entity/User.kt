@@ -1,6 +1,5 @@
 package dev.bifel.testtask.model.entity
 
-import android.graphics.Picture
 import com.google.gson.annotations.SerializedName
 
 

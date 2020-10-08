@@ -11,9 +11,9 @@ import com.google.gson.annotations.SerializedName
  */
 data class Picture(
     @SerializedName("large")
-    private val large: String? = null,
+    val large: String? = null,
     @SerializedName("medium")
-    private val medium: String? = null,
+    val medium: String? = null,
     @SerializedName("thumbnail")
-    private val thumbnail: String? = null,
+    val thumbnail: String? = null,
 )
