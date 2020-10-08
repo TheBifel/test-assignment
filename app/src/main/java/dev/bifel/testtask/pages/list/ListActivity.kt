@@ -9,6 +9,7 @@ import dev.bifel.testtask.global.base.BaseRecyclerAdapter
 import dev.bifel.testtask.global.common.DEFAULT_PAGE_SIZE
 import dev.bifel.testtask.model.entity.User
 import dev.bifel.testtask.pages.list.viewHolder.UserViewHolderImpl
+import dev.bifel.testtask.pages.person.PersonActivity
 import kotlinx.android.synthetic.main.activity_list.*
 import org.koin.standalone.inject
 
@@ -41,9 +42,7 @@ class ListActivity : BaseActivity<ListView>(), ListView {
         setContentView(R.layout.activity_list)
         bindPresenter(presenter, this)
 
-        adapter.onItemClickListener = {
-
-        }
+        adapter.onItemClickListener = { PersonActivity.launch(this, it) }
         recycler.adapter = adapter
         recycler.layoutManager = recyclerViewOnScrollListener.layoutManager
         recycler.addOnScrollListener(recyclerViewOnScrollListener)
