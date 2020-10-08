@@ -8,7 +8,7 @@ import dev.bifel.testtask.global.base.BaseActivity
 import dev.bifel.testtask.global.base.BaseRecyclerAdapter
 import dev.bifel.testtask.global.common.DEFAULT_PAGE_SIZE
 import dev.bifel.testtask.model.entity.User
-import dev.bifel.testtask.pages.list.viewHolder.UserViewHolderImpl
+import dev.bifel.testtask.pages.list.viewholder.UserViewHolderImpl
 import dev.bifel.testtask.pages.person.PersonActivity
 import kotlinx.android.synthetic.main.activity_list.*
 import org.koin.standalone.inject

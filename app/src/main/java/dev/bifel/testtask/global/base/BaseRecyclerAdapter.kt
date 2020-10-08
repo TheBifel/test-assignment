@@ -2,7 +2,7 @@ package dev.bifel.testtask.global.base
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import dev.bifel.testtask.pages.list.viewHolder.LoadingVH
+import dev.bifel.testtask.pages.list.viewholder.LoadingVH
 import java.util.*
 
 open class BaseRecyclerAdapter<DATA, VH : BaseRecyclerViewHolder<DATA>>(private val viewHolderSupplier: (ViewGroup) -> VH) :

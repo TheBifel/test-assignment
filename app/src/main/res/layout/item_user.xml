@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="15dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginEnd="15dp"
-    android:layout_marginBottom="5dp"
-
-    android:orientation="horizontal">
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
+    android:paddingStart="15dp"
+    android:paddingTop="5dp"
+    android:paddingEnd="15dp"
+    android:paddingBottom="5dp">
 
     <ImageView
         android:id="@+id/img_user_icon"
@@ -27,10 +29,10 @@
             android:id="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textDirection="locale"
-            android:textAlignment="viewStart"
             android:gravity="start"
+            android:textAlignment="viewStart"
             android:textColor="@color/text_primary"
+            android:textDirection="locale"
             android:textSize="@dimen/size_text_big"
             tools:text="Степан Остапенко" />
 

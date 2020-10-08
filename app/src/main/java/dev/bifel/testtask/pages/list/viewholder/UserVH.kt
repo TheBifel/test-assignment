@@ -1,4 +1,4 @@
-package dev.bifel.testtask.pages.list.viewHolder
+package dev.bifel.testtask.pages.list.viewholder
 
 import android.view.View
 import dev.bifel.testtask.global.base.BaseRecyclerViewHolder
