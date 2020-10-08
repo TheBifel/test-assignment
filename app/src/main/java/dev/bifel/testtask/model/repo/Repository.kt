@@ -10,5 +10,5 @@ import io.reactivex.Single
  * @author Bohdan Ishchenko
  */
 interface Repository {
-    fun getUsers(): Single<List<User>>
+    fun getUsers(page: Int): Single<List<User>>
 }

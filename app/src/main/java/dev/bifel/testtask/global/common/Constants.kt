@@ -8,3 +8,4 @@ package dev.bifel.testtask.global.common
  */
 
 const val BASE_URL = "https://randomuser.me/"
+const val DEFAULT_PAGE_SIZE = 20

@@ -1,7 +1,6 @@
 package dev.bifel.testtask.global.base
 
 import android.app.Activity
-import android.view.View
 import android.widget.Toast
 import org.koin.standalone.KoinComponent
 
@@ -15,9 +14,6 @@ abstract class BaseActivity<VIEW : BaseView>() : Activity(), KoinComponent, Base
 
     private var presenter: BasePresenter<VIEW>? = null
     private var view: VIEW? = null
-
-    protected abstract val content: View
-    protected abstract val progress: View
 
     protected fun bindPresenter(presenter: BasePresenter<VIEW>, view: VIEW) {
         this.presenter = presenter
@@ -34,15 +30,7 @@ abstract class BaseActivity<VIEW : BaseView>() : Activity(), KoinComponent, Base
         presenter?.unbindView()
     }
 
-    override fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            content.visibility = View.GONE
-            progress.visibility = View.VISIBLE
-        } else {
-            content.visibility = View.VISIBLE
-            progress.visibility = View.GONE
-        }
-    }
+    override fun showLoading(isLoading: Boolean) {}
 
     override fun showError(errorMsg: String) =
         Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()

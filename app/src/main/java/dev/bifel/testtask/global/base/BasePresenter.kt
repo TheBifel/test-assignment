@@ -35,21 +35,22 @@ abstract class BasePresenter<VIEW : BaseView> : KoinComponent {
     }
 }
 
-fun Disposable.register(presenter: BasePresenter<*>): Disposable {
+fun Disposable.register(presenter: BasePresenter<*>) {
     presenter.compositeDisposable?.add(this)
-    return this;
 }
 
-fun <T> Single<T>.toAsync(subscribeScheduler: Scheduler = Schedulers.io()): Single<T> {
-    return subscribeOn(subscribeScheduler)
-        .observeOn(AndroidSchedulers.mainThread());
-}
+fun <T> Single<T>.toAsync(subscribeScheduler: Scheduler = Schedulers.io()): Single<T> =
+    subscribeOn(subscribeScheduler)
+        .observeOn(AndroidSchedulers.mainThread())
 
-fun <T> Single<T>.showLoading(view: BaseView?): Single<T> {
-    return doOnSubscribe { view?.showLoading(true) }
-        .doAfterTerminate { view?.showLoading(false) }
-
-}
+fun <T> Single<T>.showLoading(view: BaseView?, isLoading: (Boolean) -> Unit = {}): Single<T> =
+    doOnSubscribe {
+        view?.showLoading(true)
+        isLoading(true)
+    }.doAfterTerminate {
+        view?.showLoading(false)
+        isLoading(false)
+    }
 
 fun <T> Single<T>.subscribe(
     view: BaseView?,

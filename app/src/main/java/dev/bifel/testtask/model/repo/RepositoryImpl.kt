@@ -1,5 +1,6 @@
 package dev.bifel.testtask.model.repo
 
+import dev.bifel.testtask.global.common.DEFAULT_PAGE_SIZE
 import dev.bifel.testtask.model.api.UsersApi
 import dev.bifel.testtask.model.entity.User
 import io.reactivex.Single
@@ -12,7 +13,7 @@ import io.reactivex.Single
  */
 class RepositoryImpl(private val api: UsersApi) : Repository {
 
-    override fun getUsers(): Single<List<User>> =
-        api.getUsers(1, 20)
+    override fun getUsers(page: Int): Single<List<User>> =
+        api.getUsers(page, DEFAULT_PAGE_SIZE)
             .map { it.results }
 }

@@ -9,11 +9,22 @@ import dev.bifel.testtask.global.base.*
  * @author Bohdan Ishchenko
  */
 class ListPresenter : BasePresenter<ListView>() {
-    fun initUsers() {
-        repository.getUsers()
-            .toAsync()
-            .showLoading(view)
-            .subscribe(view) { view?.showUsers(it) }
-            .register(this)
+    var isLoading: Boolean = false
+    private var lastPage = 1
+
+    fun initUsers() = loadUsers(1)
+
+    fun loadMoreUsers() {
+        if (!isLoading) loadUsers(++lastPage)
     }
+
+    private fun loadUsers(page: Int) =
+        repository.getUsers(page)
+            .toAsync()
+            .showLoading(view) { isLoading = it }
+            .subscribe(view) {
+                lastPage = page
+                view?.showUsers(it)
+            }
+            .register(this)
 }
