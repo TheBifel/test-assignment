@@ -4,12 +4,15 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.util.Linkify
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dev.bifel.testtask.R
+import dev.bifel.testtask.global.utils.convertTimestampToDateString
 import dev.bifel.testtask.model.entity.User
 import kotlinx.android.synthetic.main.activity_person.*
+
 
 class PersonActivity : Activity() {
 
@@ -33,6 +36,29 @@ class PersonActivity : Activity() {
                     })
             .apply(RequestOptions().circleCrop())
             .into(img_user_icon)
+
+        val name = user.name
+        val fullName = "${name?.first} ${name?.last}"
+        text_name.text = fullName
+
+        text_age.text = getString(R.string.age, user.dob?.age)
+
+        text_gender.setTitle(R.string.gender)
+        text_gender.setText(user.gender)
+
+        text_email.setTitle(R.string.email)
+        text_email.setText(user.email)
+        Linkify.addLinks(text_email.textView, Linkify.EMAIL_ADDRESSES)
+
+        text_dob.setTitle(R.string.dob)
+        text_dob.setText(convertTimestampToDateString(user.dob?.date))
+
+        text_phone.setTitle(R.string.phone)
+        text_phone.setText(user.cell)
+        Linkify.addLinks(
+            text_phone.textView,
+            Linkify.PHONE_NUMBERS
+        ) // it's basically working, but not for all data
     }
 
     companion object {

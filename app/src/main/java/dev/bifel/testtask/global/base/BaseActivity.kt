@@ -17,6 +17,7 @@ abstract class BaseActivity<VIEW : BaseView>() : Activity(), KoinComponent, Base
 
     protected fun bindPresenter(presenter: BasePresenter<VIEW>, view: VIEW) {
         this.presenter = presenter
+        this.view = view
         presenter.bindView(view)
     }
 
